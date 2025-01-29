@@ -6,12 +6,12 @@ const Navigation = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/" className="active:bg-red-700">
+            <NavLink to="/" className="aria-[current=page]:bg-red-700">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/shop" className="active:bg-red-700">
+            <NavLink to="/shop" className="aria-[current=page]:bg-red-700">
               Shop
             </NavLink>
           </li>
