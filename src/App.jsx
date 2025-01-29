@@ -1,3 +1,9 @@
-const App = () => <h1>Our First Test</h1>;
+const App = () => {
+  return (
+    <>
+      <h1 className="m-4 mt-1 flex text-cyan-600">Our First Test</h1>
+    </>
+  );
+};
 
 export default App;
