@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
 import Navigation from "./Navigation";
 
 const Shop = () => {
@@ -25,9 +24,6 @@ const Shop = () => {
     <>
       <Navigation />
       <h1>Available products</h1>
-      {products.map((product) => (
-        <p key={product.id}>{product.title}</p>
-      ))}
       {products.map((product) => (
         <p key={product.id}>{product.title}</p>
       ))}
