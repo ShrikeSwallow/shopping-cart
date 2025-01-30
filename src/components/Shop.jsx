@@ -24,9 +24,15 @@ const Shop = () => {
     <>
       <Navigation />
       <h1>Available products</h1>
-      {products.map((product) => (
-        <p key={product.id}>{product.title}</p>
-      ))}
+      <div className="products-container grid grid-cols-6 gap-12">
+        {products.map((product) => (
+          <div key={product.id} className="product-card flex flex-col">
+            <img src={product.image}></img>
+            <p className="product-name">{product.title}</p>
+            <p className="product-price">${product.price}</p>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
