@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
+  const { pathname } = location;
   return (
     <>
       <nav className="mb-8 mt-3">
@@ -21,6 +23,7 @@ const Navigation = () => {
               Shop
             </NavLink>
           </li>
+          {pathname.includes("shop") && <li className="px-8">Basket</li>}
         </ul>
       </nav>
     </>
