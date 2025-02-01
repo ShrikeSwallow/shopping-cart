@@ -1,4 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
+import Icon from "@mdi/react";
+import { mdiBasketOutline } from "@mdi/js";
 
 const Navigation = () => {
   const location = useLocation();
@@ -23,7 +25,14 @@ const Navigation = () => {
               Shop
             </NavLink>
           </li>
-          {pathname.includes("shop") && <li className="px-8">Basket</li>}
+          {pathname.includes("shop") && (
+            <li className="flex -translate-y-1 items-center px-8">
+              <Icon path={mdiBasketOutline} size={1.5} />
+              <div className="-translate-x-1/2 translate-y-1/2 place-self-center rounded-full border border-orange-500 bg-slate-700 p-1.5 text-xs font-extrabold">
+                12
+              </div>
+            </li>
+          )}
         </ul>
       </nav>
     </>
