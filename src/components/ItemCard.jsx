@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const ItemCard = ({ title, price, imageUrl, inBasket, onSubmit }) => {
+const ItemCard = ({ productId, title, price, imageUrl, onSubmit }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event) => {
@@ -17,13 +17,13 @@ const ItemCard = ({ title, price, imageUrl, inBasket, onSubmit }) => {
   return (
     <div className="product-card flex flex-col gap-1 rounded-lg bg-slate-50 p-4 text-gray-900 shadow-md shadow-slate-900">
       <img src={imageUrl} className="mb-2 h-3/4 object-contain"></img>
-      <p>In basket: {inBasket}</p>
       <p className="product-name flex-1 font-semibold">{title}</p>
       <p className="product-price">${price}</p>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          onSubmit(value);
+          onSubmit(productId, value);
+
           setValue(0);
         }}
         className="grid grid-cols-3 gap-y-2"
@@ -57,10 +57,10 @@ const ItemCard = ({ title, price, imageUrl, inBasket, onSubmit }) => {
 };
 
 ItemCard.propTypes = {
+  productId: PropTypes.number,
   title: PropTypes.string,
   price: PropTypes.number,
   imageUrl: PropTypes.string,
-  inBasket: PropTypes.number,
   onSubmit: PropTypes.func,
 };
 
