@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const ItemCard = ({ title, price, imageUrl, inBasket }) => {
+const ItemCard = ({ title, price, imageUrl, inBasket, onSubmit }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event) => {
@@ -13,9 +13,6 @@ const ItemCard = ({ title, price, imageUrl, inBasket }) => {
   const handleIncrease = () => {
     setValue(Number.parseInt(value) + 1);
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
 
   return (
     <div className="product-card flex flex-col gap-1 rounded-lg bg-slate-50 p-4 text-gray-900 shadow-md shadow-slate-900">
@@ -23,11 +20,18 @@ const ItemCard = ({ title, price, imageUrl, inBasket }) => {
       <p>In basket: {inBasket}</p>
       <p className="product-name flex-1 font-semibold">{title}</p>
       <p className="product-price">${price}</p>
-      <form onSubmit={handleSubmit} className="grid grid-cols-3 gap-y-2">
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onSubmit(value);
+          setValue(0);
+        }}
+        className="grid grid-cols-3 gap-y-2"
+      >
         <label htmlFor="quantity" className="col-span-3 self-center text-sm">
           Quantity{" "}
         </label>
-        <button onClick={handleDecrease} className="">
+        <button type="button" onClick={handleDecrease} className="">
           -
         </button>
         <input
@@ -38,7 +42,7 @@ const ItemCard = ({ title, price, imageUrl, inBasket }) => {
           type="text"
           value={value}
         />
-        <button onClick={handleIncrease} className="">
+        <button type="button" onClick={handleIncrease} className="">
           +
         </button>
         <button
@@ -57,6 +61,7 @@ ItemCard.propTypes = {
   price: PropTypes.number,
   imageUrl: PropTypes.string,
   inBasket: PropTypes.number,
+  onSubmit: PropTypes.func,
 };
 
 export default ItemCard;

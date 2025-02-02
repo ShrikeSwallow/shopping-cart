@@ -25,6 +25,12 @@ const Shop = () => {
     };
   }, []);
 
+  console.log(totalBasket);
+
+  const handleAdd = (value) => {
+    setTotalBasket(totalBasket + value);
+  };
+
   return (
     <>
       <Navigation quantity={totalBasket} />
@@ -38,6 +44,7 @@ const Shop = () => {
               price={product.price}
               imageUrl={product.image}
               inBasket={product.inBasket}
+              onSubmit={handleAdd}
             />
           ))}
         </div>
